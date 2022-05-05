@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    .tabcontent {
+    display: none;
+    padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+    </style>
+</head>
+<body>
+
+<h2>Title</h2>
+<p/>
+<div class="tabs is-centered">
+    <ul>
+  <li class="is-active tablinks" onclick="openTab(event, 'product_astian')"><a>product_astian</a></li>
+  <li class="tablinks" onclick="openTab(event, 'access.log')"><a>access.log</a></li>
+  <li class="tablinks" onclick="openTab(event, 'error.log')"><a>error.log</a></li>
+        </ul>
+</div>
+
+<div id="product_astian" class="tabcontent" style="display: block;">
+    {% include 'product_astian.html' %}
+</div>
+
+<div id="access.log" class="tabcontent">
+    {% include 'access_log.html' %}
+</div>
+
+<div id="error.log" class="tabcontent">
+    {% include 'error_log.html' %}
+</div>
+
+<script>
+function openTab(evt, table) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replaceAll("is-active", "");
+  }
+  document.getElementById(table).style.display = "block";
+  evt.currentTarget.className += " is-active";
+}
+</script>
+
+</body>
+</html>
